@@ -12,7 +12,7 @@ export const ContactListHeader = () => {
       <span data-testid='contact-list-header' className="font-bold"> {'Contact List Page: '}</span>
       <div className="flex flex-row justify-end">
         <Link passHref href="/contact/form">
-          <button className="bg-blue-500 text-xs flex flex-row rounded-full hover:bg-blue-700 text-white py-2 px-4">
+          <button className="bg-blue-500 text-xs font-medium flex flex-row rounded-full hover:bg-blue-700 text-white py-2 px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"

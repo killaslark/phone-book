@@ -82,6 +82,7 @@ export const ContactCard = ({ contact }: PropsWithChildren<Props>) => {
             </div>
             <div className="flex flex-row items-center spacing-x-1 pr-2 ">
               <button
+                aria-label="delete-button"
                 data-testid={`contact-list-card-${contact.id}-delete-button`}
                 onClick={handlePressDelete}
                 className="rounded text-gray-400 absolute top-1 right-1"
@@ -120,6 +121,7 @@ export const ContactCard = ({ contact }: PropsWithChildren<Props>) => {
               </button>
 
               <button
+                aria-label="love-button"
                 data-testid={`contact-list-card-${contact.id}-love-button`}
                 onClick={handlePressLove}
                 className={isFavorite ? 'text-red-500' : 'text-gray-200'}
