@@ -1,24 +1,25 @@
-import { Controller, useFieldArray, useForm } from "react-hook-form";
-import { type Contact } from "../hooks/useContactDetail";
-import { ConfirmationModal, InputField } from "@components";
 import { useEffect, useState } from "react";
+
+import { Controller, useFieldArray, useForm } from "react-hook-form";
+
+import { ConfirmationModal, InputField } from "@components";
 import { nameValidation, phoneValidation } from "../constants";
+import { type Contact } from "../hooks/useContactDetail";
 
 export type ContactFormShape = Pick<Contact, 'first_name' | 'last_name' | 'phones'>;
+
+type TAlertContent = {
+  name: string;
+  message: string;
+} | null;
 
 interface Props {
   initialValue?: ContactFormShape;
   onSubmit: (contact: ContactFormShape) => void;
   hidePhoneNumberField?: boolean;
   loading?: boolean;
-  error?: {
-    name: string;
-    message: string;
-  } | null
-  success?: {
-    name: string;
-    message: string;
-  } | null
+  error?: TAlertContent
+  success?: TAlertContent
   submitLabel?: string;
 }
 export const ContactForm = ({ initialValue, onSubmit, hidePhoneNumberField, error, success, submitLabel, loading }: Props) => {

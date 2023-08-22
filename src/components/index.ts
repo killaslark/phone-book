@@ -1,5 +1,5 @@
 export * from './Card';
-export * from './Pagination';
-export * from './MenuBar';
 export * from './ConfirmationModal';
 export * from './InputField';
+export * from './Pagination';
+export * from './FullScreenLoader';

@@ -1,6 +1,8 @@
-import { ConfirmationModal } from "@components";
 import { useState } from "react";
-import { Controller, useFieldArray, useForm } from "react-hook-form";
+
+import { Controller, useForm } from "react-hook-form";
+
+import { ConfirmationModal } from "@components";
 import { InputField } from "../../../components/InputField";
 import { phoneValidation } from "../constants";
 import { type Contact } from "../hooks/useContactDetail";
@@ -12,17 +14,6 @@ interface Props {
 }
 
 export const ContactEditPhoneForm = ({ phones, id }: Props) => {
-  const { control } = useForm({
-    defaultValues: {
-      phones
-    }
-  });
-
-  const phonesField = useFieldArray({
-    control,
-    name: 'phones',
-  });
-
 
   return (
     <div className="flex flex-col w-full h-full max-w-lg px-4 self-center justify-self-center items-center">
@@ -30,39 +21,20 @@ export const ContactEditPhoneForm = ({ phones, id }: Props) => {
         {'Edit Phone Number'}
       </label>
       <form className="w-full space-y-4 bg-white shadow-md rounded px-4 pt-6 pb-8 mb-4">
-        {phonesField.fields.map((phone, idx) => (
-          <Controller
-            key={phone.id}
-            control={control}
-            name={`phones.${idx}.number`}
-            rules={{
-              required: 'Phone number is required',
-              validate: (value: string) => {
-                if (!phoneValidation.test(value))
-                  return 'Phone number format is invalid';
-              },
-            }}
-            render={({ field: { onChange, value } }) => (
-              <PhoneField
-                contactId={id}
-                onChange={onChange}
-                value={value}
-                onEditPhone={() => console.log('asdas')}
-              />
-            )}
+        {phones?.map((phone) => (
+          <PhoneField
+            contactId={id}
+            value={phone.number}
           />
         ))}
       </form>
     </div>
   )
-
 }
 
 interface PhoneFieldProps {
   contactId: string;
   value?: string
-  onChange?: (...event: any[]) => void;
-  onEditPhone: () => void;
 }
 const PhoneField = ({ contactId, value }: PhoneFieldProps) => {
   const [initialValue, setInitialValue] = useState(value);
@@ -198,9 +170,7 @@ const PhoneField = ({ contactId, value }: PhoneFieldProps) => {
 
           </button>
         )}
-
-
-        < ConfirmationModal
+        <ConfirmationModal
           title={`are you sure to edit this number?`}
           isOpen={openModal}
           onClose={handleCloseModal}

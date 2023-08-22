@@ -1,5 +1,6 @@
 import { MutationHookOptions, gql, useMutation } from '@apollo/client';
-import { Contact } from './useContactDetail';
+
+import { type Contact } from './useContactDetail';
 
 interface DeleteContactParams {
   id: string;

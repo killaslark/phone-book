@@ -1,4 +1,5 @@
 import { MutationHookOptions, gql, useMutation } from '@apollo/client';
+
 import { type Contact } from './useContactDetail';
 
 type CreateContactParams = Pick<Contact, 'first_name' | 'last_name' | 'phones'>

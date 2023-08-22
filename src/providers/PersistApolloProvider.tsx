@@ -15,6 +15,7 @@ import {
 } from '@apollo/client';
 import { CachePersistor, LocalStorageWrapper } from 'apollo3-cache-persist';
 
+import { FullScreenLoader } from '@components';
 import config from '@config';
 
 const cache = new InMemoryCache();
@@ -70,7 +71,7 @@ const PersistApolloProvider = ({ children }: PropsWithChildren<{}>) => {
   }, [persistor]);
 
   if (!client) {
-    return <h2>Initializing app...</h2>;
+    return <FullScreenLoader title={'Initializing the App...'} description='This may take a few seconds...' />;
   }
 
   return (

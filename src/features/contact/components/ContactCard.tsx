@@ -1,12 +1,12 @@
 import { MouseEventHandler, PropsWithChildren, useMemo, useState } from 'react';
 
-import { Card, ConfirmationModal } from '@components';
+import Link from 'next/link';
 
+import { Card, ConfirmationModal } from '@components';
 import { useContactListProvider } from '../contexts';
 import { type Contact } from '../hooks/useContactDetail';
 import { useDeieteContact } from '../hooks/useDeleteContact';
 import { ContactPhotoPlaceholder } from './ContactPhotoPlaceholder';
-import Link from 'next/link';
 
 interface Props {
   contact: Contact;
@@ -67,17 +67,16 @@ export const ContactCard = ({ contact }: PropsWithChildren<Props>) => {
   }
 
   return (
-
     <Link passHref href={`/contact/form?id=${contact.id}`}>
-      <Card className="relative">
+      <Card className="relative overflow-hidden w-full min-w-fit">
         <ContactPhotoPlaceholder
           first_name={contact.first_name}
           last_name={contact.last_name}
         />
         <div className="ml-3 w-full">
           <div className="flex flex-row justify-between items-center space-x-1">
-            <div>
-              <p className="text-sm font-medium  text-gray-900">{`${contact.first_name} ${contact.last_name}`}</p>
+            <div className='flex flex-col grow overflow-hidden' style={{ maxWidth: 250 }}>
+              <p className=" text-sm font-medium text-gray-900">{`${contact.first_name} ${contact.last_name}`}</p>
               {/* Intended for list only show first number */}
               <p className="text-sm text-gray-600">{contact.phones[0]?.number}</p>
             </div>

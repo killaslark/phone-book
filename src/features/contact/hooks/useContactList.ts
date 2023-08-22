@@ -1,8 +1,8 @@
-import { useQuery, gql, QueryHookOptions } from '@apollo/client';
+import { QueryHookOptions, gql, useQuery } from '@apollo/client';
 
 import {
-  type WhereComparisonType,
   type OrderType,
+  type WhereComparisonType,
   type WhereConjunctionType,
 } from '@common-types/query';
 import { type Contact } from './useContactDetail';

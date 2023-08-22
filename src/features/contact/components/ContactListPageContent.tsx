@@ -1,11 +1,10 @@
 import { Pagination } from '@components';
 
 import { useContactListProvider } from '../contexts';
-import { ContactCard } from './ContactCard';
 import { ContactListHeader } from './ContactListHeader';
 import { ContactListLoader } from './ContactListLoader';
-import { RegularContactList } from './RegularContactList';
 import { FavoriteContactList } from './FavoriteContactList';
+import { RegularContactList } from './RegularContactList';
 
 const ContactListPageContent = () => {
   const { data, loading, pageIndex, pageSize, onChangePageIndex } =
@@ -17,7 +16,7 @@ const ContactListPageContent = () => {
   const originalContactList = data?.contact || [];
 
   return (
-    <div className="flex flex-col justify-between w-full pb-4 space-y-4 ">
+    <div className="flex flex-col justify-between w-full pb-4 space-y-4">
       <ContactListHeader />
       <FavoriteContactList />
       <RegularContactList />
