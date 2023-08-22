@@ -41,7 +41,7 @@ export const ContactForm = ({ initialValue, onSubmit, hidePhoneNumberField, erro
     if (initialValue) {
       reset(initialValue)
     }
-  }, [initialValue])
+  }, [reset, initialValue])
 
   const phonesField = useFieldArray({
     control,

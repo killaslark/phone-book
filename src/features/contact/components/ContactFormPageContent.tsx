@@ -32,14 +32,14 @@ export default function ContactFormPageContent() {
             last_name
           }
         },
-        onError: console.error
+        onError: () => { /** no operation */ }
       })
       return
     }
 
     createMutation.onCreate({
       variables: contact,
-      onError: console.error,
+      onError: () => { /** no operation */ },
 
       // optimistic update
       onCompleted: () => {
