@@ -17,7 +17,7 @@ export const ContactListLoader = ({ totalItems }: Props) => {
   if (!loading) return null;
 
   return (
-    <div data-testid='contact-list-loader' className="grid gap-2 w-full">
+    <div data-testid='contact-list-loader' className="grid gap-2 w-full px-4">
       {dummyList.map((_item, idx) => (
         <Card key={idx}>
           <div className="w-full">
