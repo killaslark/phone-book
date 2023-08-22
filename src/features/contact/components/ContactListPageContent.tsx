@@ -23,8 +23,9 @@ const ContactListPageContent = () => {
       <ContactListLoader />
 
       {!loading && (
-        <div className="flex grow-1 justify-center items-center">
+        <div data-testid='contact-list-pagination' className="flex grow-1 justify-center items-center">
           <Pagination
+            testIdPrefix={'contact-list'}
             currentPage={pageIndex + 1}
             disabledNext={originalContactList.length < pageSize}
             disabledPrevious={pageIndex === 0}

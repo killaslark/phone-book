@@ -41,7 +41,7 @@ export interface GetContactListResponse {
   contact: Contact[];
 }
 
-const GET_CONTACT_LIST_QUERY = gql(`
+export const GET_CONTACT_LIST_QUERY = gql(`
   query GetContactList (
     $distinct_on: [contact_select_column!], 
     $limit: Int, 

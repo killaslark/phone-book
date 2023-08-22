@@ -15,6 +15,14 @@ import {
 } from '@apollo/client';
 import { CachePersistor, LocalStorageWrapper } from 'apollo3-cache-persist';
 
+import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
+import { __DEV__ } from '@apollo/client/utilities/globals';
+
+if (__DEV__) {  // Adds messages only in a dev environment
+  loadDevMessages();
+  loadErrorMessages();
+}
+
 import { FullScreenLoader } from '@components';
 import config from '@config';
 

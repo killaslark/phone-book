@@ -10,7 +10,7 @@ interface DeleteContactResponse {
   delete_contact_by_pk: Pick<Contact, 'first_name' | 'last_name' | 'id'>;
 }
 
-const DELETE_CONTACT_QUERY = gql(`
+export const DELETE_CONTACT_QUERY = gql(`
   mutation MyMutation($id: Int!) {
     delete_contact_by_pk(id: $id) {
       first_name

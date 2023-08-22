@@ -7,7 +7,7 @@ export const FavoriteContactList = () => {
   if (loading || !favoriteContactList.length) return null;
 
   return (
-    <div className="grid gap-2 w-full px-4">
+    <div data-testid='contact-list-favorite' className="grid gap-2 w-full px-4">
       <span className="font-bold"> {'Favorite Lists: '}</span>
       {!!favoriteContactList.length &&
         favoriteContactList.map(contact => (

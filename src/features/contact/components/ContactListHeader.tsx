@@ -9,7 +9,7 @@ export const ContactListHeader = () => {
 
   return (
     <div className="px-4 pt-4 space-y-4">
-      <span className="font-bold"> {'Contact List Page: '}</span>
+      <span data-testid='contact-list-header' className="font-bold"> {'Contact List Page: '}</span>
       <div className="flex flex-row justify-end">
         <Link passHref href="/contact/form">
           <button className="bg-blue-500 text-xs flex flex-row rounded-full hover:bg-blue-700 text-white py-2 px-4">
@@ -50,6 +50,7 @@ export const ContactListHeader = () => {
           </div>
 
           <input
+            data-testid='contact-list-search-input'
             onChange={e => onChangeSearchKeyword(e.target.value)}
             className="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
             type="text"

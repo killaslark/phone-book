@@ -73,7 +73,7 @@ export const ContactCard = ({ contact }: PropsWithChildren<Props>) => {
           first_name={contact.first_name}
           last_name={contact.last_name}
         />
-        <div className="ml-3 w-full">
+        <div data-testid={`contact-list-card-${contact.id}`} className="ml-3 w-full">
           <div className="flex flex-row justify-between items-center space-x-1">
             <div className='flex flex-col grow overflow-hidden' style={{ maxWidth: 250 }}>
               <p className=" text-sm font-medium text-gray-900">{`${contact.first_name} ${contact.last_name}`}</p>
@@ -82,6 +82,7 @@ export const ContactCard = ({ contact }: PropsWithChildren<Props>) => {
             </div>
             <div className="flex flex-row items-center spacing-x-1 pr-2 ">
               <button
+                data-testid={`contact-list-card-${contact.id}-delete-button`}
                 onClick={handlePressDelete}
                 className="rounded text-gray-400 absolute top-1 right-1"
               >
@@ -119,6 +120,7 @@ export const ContactCard = ({ contact }: PropsWithChildren<Props>) => {
               </button>
 
               <button
+                data-testid={`contact-list-card-${contact.id}-love-button`}
                 onClick={handlePressLove}
                 className={isFavorite ? 'text-red-500' : 'text-gray-200'}
               >
@@ -133,6 +135,7 @@ export const ContactCard = ({ contact }: PropsWithChildren<Props>) => {
               </button>
             </div>
             <ConfirmationModal
+              testIdPrefix={'contact-list-delete'}
               title={`are you sure to delete contact with name ${contact.first_name}?`}
               isOpen={openModal}
               onClose={() => setOpenModal(false)}

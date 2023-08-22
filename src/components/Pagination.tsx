@@ -1,4 +1,5 @@
 interface Props {
+  testIdPrefix?: string;
   currentPage: number;
   disabledNext?: boolean;
   disabledPrevious?: boolean;
@@ -6,6 +7,7 @@ interface Props {
   onPressPrevious?: () => void;
 }
 export const Pagination = ({
+  testIdPrefix,
   currentPage,
   disabledNext,
   disabledPrevious,
@@ -19,6 +21,7 @@ export const Pagination = ({
       <span>Current Page: {currentPage}</span>
       <div className="inline-flex mt-2 xs:mt-0">
         <button
+          data-testid={[testIdPrefix, 'pagination-prev-button'].filter(Boolean).join('-')}
           disabled={disabledPrevious}
           onClick={onPressPrevious}
           className="
@@ -49,6 +52,7 @@ export const Pagination = ({
 
         <button
           disabled={disabledNext}
+          data-testid={[testIdPrefix, 'pagination-next-button'].filter(Boolean).join('-')}
           onClick={onPressNext}
           className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-l border-gray-700 rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:opacity-50"
         >

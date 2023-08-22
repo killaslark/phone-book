@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
 interface Props {
+  testIdPrefix?: string;
   isOpen: boolean;
   title: string;
   description?: string;
@@ -12,6 +13,7 @@ interface Props {
   onConfirm: () => void;
 }
 export const ConfirmationModal = ({
+  testIdPrefix,
   isOpen,
   onClose,
   onConfirm,
@@ -53,12 +55,13 @@ export const ConfirmationModal = ({
                 >
                   {title}
                 </Dialog.Title>
-                <div className="mt-2">
+                <div data-testid={[testIdPrefix, 'confirm-modal'].filter(Boolean).join('-')} className="mt-2">
                   <p className="text-sm text-gray-500">{description}</p>
                 </div>
 
                 <div className="px-4 py-3 flex flex-row px-6 items-center justify-center space-x-3">
                   <button
+                    data-testid={[testIdPrefix, 'confirm-modal-cancel'].filter(Boolean).join('-')}
                     type="button"
                     className="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
                     onClick={onClose}
@@ -67,6 +70,7 @@ export const ConfirmationModal = ({
                   </button>
 
                   <button
+                    data-testid={[testIdPrefix, 'confirm-modal-confirm'].filter(Boolean).join('-')}
                     type="button"
                     className="inline-flex w-full justify-center rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
                     onClick={onConfirm}
