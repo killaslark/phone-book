@@ -70,7 +70,7 @@ export default function ContactFormPageContent() {
 
 
   if (contactDetailQuery.called && !contactDetailQuery.contact) {
-    return <span>contact not found</span>
+    return <span data-testid='contact-form-not-found'>contact not found</span>
   }
 
 

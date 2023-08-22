@@ -71,6 +71,7 @@ export const ContactForm = ({ initialValue, onSubmit, hidePhoneNumberField, erro
           }}
           render={({ field: { value, onChange }, fieldState: { error } }) => (
             <InputField
+              data-testid='contact-form-first-name'
               placeholder='Jhon'
               label="First Name"
               value={value}
@@ -94,6 +95,7 @@ export const ContactForm = ({ initialValue, onSubmit, hidePhoneNumberField, erro
             <InputField
               label="Last Name"
               placeholder='Doe'
+              data-testid='contact-form-last-name'
               value={value}
               onChange={onChange}
               errorMessage={error?.message}
@@ -120,6 +122,7 @@ export const ContactForm = ({ initialValue, onSubmit, hidePhoneNumberField, erro
                 <div key={phone.id} className="flex flex-row space-x-2">
                   <div className="flex grow items-start">
                     <InputField
+                      data-testid={`contact-form-phone-number-${idx}`}
                       type="tel"
                       placeholder="085212331231"
                       value={value}
@@ -129,6 +132,7 @@ export const ContactForm = ({ initialValue, onSubmit, hidePhoneNumberField, erro
                   </div>
                   {phonesField.fields.length !== 1 && (
                     <button
+                      data-testid={`contact-form-phone-number-delete-${idx}`}
                       onClick={() => phonesField.remove(idx)}
                       className="mt-1 rounded self-start bg-red-500 hover:bg-red-700 text-sm text-white py-2 px-4 focus:outline-none focus:shadow-outline"
                       type="button"
@@ -146,6 +150,7 @@ export const ContactForm = ({ initialValue, onSubmit, hidePhoneNumberField, erro
 
           <div className="flex grow justify-end">
             <button
+              data-testid={'contact-form-phone-number-add'}
               onClick={() => phonesField.append({ number: '' })}
               className="self-center bg-blue-500 hover:bg-blue-700 text-sm text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
@@ -168,14 +173,14 @@ export const ContactForm = ({ initialValue, onSubmit, hidePhoneNumberField, erro
         )}
 
         {success && (
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+          <div data-testid='contact-form-success-alert' className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
             <strong className="font-bold">{success.name}</strong>
             <span className="block sm:inline">{success.message}</span>
           </div>
         )}
 
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <div data-testid='contact-form-error-alert' className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             <strong className="font-bold">{error.name}</strong>
             <span className="block sm:inline">{error.message}</span>
           </div>
@@ -200,6 +205,7 @@ export const ContactForm = ({ initialValue, onSubmit, hidePhoneNumberField, erro
           </svg>
         ) : (
           <button
+            data-testid='contact-form-submit-button'
             onClick={handlePressSubmit}
             className="justify-center bg-blue-500 hover:bg-blue-700 text-sm font-bold text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
@@ -209,6 +215,7 @@ export const ContactForm = ({ initialValue, onSubmit, hidePhoneNumberField, erro
         )}
       </form>
       <ConfirmationModal
+        testIdPrefix={'contact-form-submit'}
         title={`are you sure to ${submitLabel?.toLowerCase() || 'create'} this data?`}
         isOpen={openModal}
         onClose={() => setOpenModal(false)}

@@ -3,7 +3,7 @@
 export const ContactFormLoader = () => {
 
   return (
-    <div className="flex flex-col w-full h-full max-w-lg px-4 self-center justify-self-center items-center">
+    <div data-testid='contact-form-loader' className="flex flex-col w-full h-full max-w-lg px-4 self-center justify-self-center items-center">
       <span className="mb-4 font-bold text-lg">{'Contact Form'}</span>
       <form className="w-full space-y-4 bg-white shadow-md rounded px-4 pt-6 pb-8 mb-4">
         <div className="animate-pulse flex space-x-4">

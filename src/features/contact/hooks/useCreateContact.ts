@@ -10,7 +10,7 @@ interface CreateContactResponse {
   }
 }
 
-const CREATE_CONTACT_QUERY = gql(`
+export const CREATE_CONTACT_QUERY = gql(`
   mutation AddContactWithPhones(
     $first_name: String!, 
     $last_name: String!, 

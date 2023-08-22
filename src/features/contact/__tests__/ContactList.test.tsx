@@ -8,7 +8,7 @@ import { GET_CONTACT_LIST_QUERY } from '../hooks/useContactList';
 import { mockContactDeleteRequest, mockContactDeleteResponse, mockContactsRequest, mockContactsResult } from '../__mocks__';
 
 jest.useFakeTimers();
-jest.mock('lodash/debounce', () => jest.fn(fn => fn));
+jest.mock('lodash/debounce', () => jest.fn(fn => fn)); // mocking debounce on typing search
 global.ResizeObserver = require('resize-observer-polyfill')
 
 describe('Contact List', () => {

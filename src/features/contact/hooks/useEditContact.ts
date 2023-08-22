@@ -11,7 +11,7 @@ interface EditContactResponse {
   update_contact_by_pk: Pick<Contact, 'first_name' | 'last_name' | 'phones' | 'id'>;
 }
 
-const EDIT_CONTACT_QUERY = gql(`
+export const EDIT_CONTACT_QUERY = gql(`
   mutation EditContactById($id: Int!, $_set: contact_set_input) {
     update_contact_by_pk(pk_columns: {id: $id}, _set: $_set) {
       id

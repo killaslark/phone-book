@@ -21,8 +21,10 @@ export const ContactEditPhoneForm = ({ phones, id }: Props) => {
         {'Edit Phone Number'}
       </label>
       <form className="w-full space-y-4 bg-white shadow-md rounded px-4 pt-6 pb-8 mb-4">
-        {phones?.map((phone) => (
+        {phones?.map((phone, index) => (
           <PhoneField
+            index={index}
+            key={phone.number}
             contactId={id}
             value={phone.number}
           />
@@ -34,9 +36,10 @@ export const ContactEditPhoneForm = ({ phones, id }: Props) => {
 
 interface PhoneFieldProps {
   contactId: string;
-  value?: string
+  value?: string;
+  index?: number;
 }
-const PhoneField = ({ contactId, value }: PhoneFieldProps) => {
+const PhoneField = ({ contactId, value, index }: PhoneFieldProps) => {
   const [initialValue, setInitialValue] = useState(value);
 
   const [openModal, setOpenModal] = useState(false);
@@ -114,6 +117,7 @@ const PhoneField = ({ contactId, value }: PhoneFieldProps) => {
             }}
             render={({ field: { onChange, value }, fieldState: { error } }) => (
               <InputField
+                data-testid={['contact-form-edit-phone', index].filter(Boolean).join('-')}
                 type="tel"
                 placeholder="085212331231"
                 value={value}
@@ -124,6 +128,7 @@ const PhoneField = ({ contactId, value }: PhoneFieldProps) => {
           />
         </div>
         <button
+          data-testid={['contact-form-edit-phone-edit-button', index].filter(Boolean).join('-')}
           onClick={handlePressEdit}
           className="rounded self-start bg-blue-500 hover:bg-blue-700 text-sm text-white py-2 px-4 focus:outline-none focus:shadow-outline"
           type="button"
@@ -160,6 +165,7 @@ const PhoneField = ({ contactId, value }: PhoneFieldProps) => {
         </button>
         {isOnEditMode && (
           <button
+            data-testid={['contact-form-edit-phone-cancel-button', index].filter(Boolean).join('-')}
             onClick={handleCancelEdit}
             className="rounded self-start bg-red-500 hover:bg-red-700 text-sm text-white py-2 px-4 focus:outline-none focus:shadow-outline"
             type="button"
@@ -171,6 +177,7 @@ const PhoneField = ({ contactId, value }: PhoneFieldProps) => {
           </button>
         )}
         <ConfirmationModal
+          testIdPrefix="contact-form-edit-phone"
           title={`are you sure to edit this number?`}
           isOpen={openModal}
           onClose={handleCloseModal}
@@ -178,14 +185,14 @@ const PhoneField = ({ contactId, value }: PhoneFieldProps) => {
         />
       </div>
       {success && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+        <div data-testid='contact-form-edit-phone-success-alert' className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
           <strong className="font-bold">{success.name}</strong>
           <span className="block sm:inline">{success.message}</span>
         </div>
       )}
 
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <div data-testid='contact-form-edit-phone-error-alert' className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
           <strong className="font-bold">{error.name}</strong>
           <span className="block sm:inline">{error.message}</span>
         </div>

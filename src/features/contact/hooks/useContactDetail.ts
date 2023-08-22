@@ -18,7 +18,7 @@ interface GetContactDetailResponse {
   contact_by_pk: Contact;
 }
 
-const CONTACT_DETAIL_QUERY = gql(`
+export const CONTACT_DETAIL_QUERY = gql(`
   query GetContactDetail($id: Int!){
     contact_by_pk(id: $id) {
       last_name
