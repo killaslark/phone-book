@@ -3,7 +3,7 @@ import { ContactListProvider } from '@features/contact/contexts';
 
 const ContactListPage = () => {
   return (
-    <main className="flex flex-col bg-slate-100 h-max min-h-screen">
+    <main className="flex flex-col bg-slate-200 h-max min-h-screen">
       <ContactListProvider>
         <ContactListPageContent />
       </ContactListProvider>

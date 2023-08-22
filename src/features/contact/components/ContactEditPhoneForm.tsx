@@ -128,6 +128,7 @@ const PhoneField = ({ contactId, value, index }: PhoneFieldProps) => {
           />
         </div>
         <button
+          aria-label="contact-form-edit-phone-edit-button"
           data-testid={['contact-form-edit-phone-edit-button', index].filter(Boolean).join('-')}
           onClick={handlePressEdit}
           className="rounded self-start bg-blue-500 hover:bg-blue-700 text-sm text-white py-2 px-4 focus:outline-none focus:shadow-outline"
